@@ -1,8 +1,9 @@
 ﻿
+using System.Net;
+
 class Program
 {
-    static readonly HttpClient client = new HttpClient();
-
+  
     static List<string> GetLinks(string htmlText)
     {
         List<string> arrayStr = new List<string>();
@@ -48,16 +49,13 @@ class Program
         return arrayStr;
     }
 
-    static async Task Main()
+    static void Main()
     {
-        string content;
 
         try
-        {        
-            HttpResponseMessage response = await client.GetAsync("https://www.hatch.com/");
-           
-            response.EnsureSuccessStatusCode();
-            content = await response.Content.ReadAsStringAsync();
+        {
+            WebClient client = new WebClient();
+            string content = client.DownloadString("https://www.hatch.com/");
 
             GetLinks(content);
  
