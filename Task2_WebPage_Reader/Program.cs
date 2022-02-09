@@ -3,7 +3,6 @@ using System.Net;
 
 class Program
 {
-  
     static List<string> GetLinks(string htmlText)
     {
         List<string> arrayStr = new List<string>();
@@ -51,7 +50,6 @@ class Program
 
     static void Main()
     {
-
         try
         {
             WebClient client = new WebClient();
